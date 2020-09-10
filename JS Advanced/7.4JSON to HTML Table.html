@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>FromJSONToHTMLTable</title>
+    <style>
+        table,
+        th {
+            border: groove;
+            border-collapse: collapse;
+        }
+
+        td {
+            border: 1px solid black;
+        }
+
+        td,
+        th {
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+    </div>
+    <script>
+        function fromJSONToHTMLTable(input) {
+            let array = JSON.parse(input);
+            let output = ["<table>"];
+            let newKeysArr = [];
+            for (let object of array) {
+                let keysArr = Object.keys(object);
+                for (let element of keysArr) {
+                    if (!newKeysArr.includes(element)) {
+                        newKeysArr.push(element);
+                    }
+                }
+            }
+
+            let keys = "<tr><th>" + newKeysArr.join("</th><th>") + "</th></tr>";
+            output.push(keys);
+
+            for (let element of array) {
+                let valuesArr = Object.values(element);
+
+                for (let i = 0; i < valuesArr.length; i++) {
+                    valuesArr[i] = String(valuesArr[i]).replace(/&/g, "&amp;")
+                        .replace(/</g, "&lt;")
+                        .replace(/>/g, "&gt;")
+                        .replace(/"/g, "&quot;")
+                        .replace(/'/g, "&#39;");
+                }
+
+                let values = "<tr><td>" + valuesArr.join("</td><td>") + "</td></tr>";
+                output.push(values);
+            }
+
+            output.push("</table>");
+            return (output.join("\n"));
+        }
+        window.onload = function () {
+            let container = document.getElementById('wrapper');
+            container.innerHTML = fromJSONToHTMLTable(['[{"Name":"Pesho\'\' <div>-a","Age":20,"City":"Sofia"},{"Name":"Gosho","Age":18,"City":"Plovdiv"},{"Name":"Angel","Age":18,"City":"Veliko Tarnovo"}]']);
+        };
+    </script>
+</body>
+
+</html>

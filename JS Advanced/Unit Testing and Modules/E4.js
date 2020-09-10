@@ -48,3 +48,4 @@ describe("StringBuilder", function() {
 })
 alabala
 dada
+dsrhferh

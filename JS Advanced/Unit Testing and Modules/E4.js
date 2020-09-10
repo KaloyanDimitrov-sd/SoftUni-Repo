@@ -47,3 +47,4 @@ describe("StringBuilder", function() {
     it("")
 })
 alabala
+dada

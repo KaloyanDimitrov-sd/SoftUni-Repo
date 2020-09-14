@@ -52,3 +52,6 @@ describe("StringBuilder", function() {
         assert.throws(() => new StringBuilder("12"), "should return error with type of input number");
     });
 });
+        assert.equal(text.toString(), "hello", "not working properly with argument string");
+        assert.equal(empty.toString(), "", "not working properly without argument");
+        assert.throws(() => new StringBuilder("12"), "should return error with type of input number");

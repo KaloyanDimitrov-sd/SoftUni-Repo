@@ -1,0 +1,36 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+header,
+main {
+    margin: auto;
+    width: 70%;
+}
+
+header {
+    border-bottom: 3px solid gray;
+    padding: 20px;
+    padding-left: 0px;
+}
+
+#Title {
+    display: inline;
+    margin-right: 100px;
+    font-size: 45px;
+}
+
+#Navigation {
+    display: inline;
+}
+
+#Navigation > a {
+    margin: 15px;
+    color: rgb(21, 197, 21);
+}

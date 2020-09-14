@@ -42,7 +42,13 @@ class StringBuilder {
 
 let assert = require("chai").assert;
 let text = new StringBuilder("hello");
+let empty = new StringBuilder("");
+
 
 describe("StringBuilder", function() {
-    it("")
+    it("Should be instantiated with a passed in string argument or without anything", function() {
+        assert.equal(text.toString(), "hello", "not working properly with argument string");
+        assert.equal(empty.toString(), "", "not working properly without argument");
+        assert.throws(() => new StringBuilder("12"), "should return error with type of input number");
+    });
 });

@@ -1,0 +1,48 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+}
+
+div,
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div {
+    max-width: 65vw;
+}
+
+span {
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+}
+
+.notes {
+    flex-direction: column;
+}
+
+.week {
+    flex-wrap: wrap;
+}
+
+.week span {
+    height: 200px;
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.notes span {
+    height: 400px;
+    min-width: 15vw;
+    padding: 10px;
+}
+
+#workweek,
+#weekend {
+    min-width: 50vw;
+}

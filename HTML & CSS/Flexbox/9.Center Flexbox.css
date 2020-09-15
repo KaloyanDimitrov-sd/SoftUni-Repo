@@ -1,0 +1,16 @@
+body {
+    display: flex;
+    background-color: rgb(238, 238, 238);
+    justify-content: center;
+    align-items: center;
+    height: 70vw;
+}
+
+div {
+    background-color: rgb(255, 255, 255);
+    width: 30%;
+    padding: 20px;
+    padding-top: 0px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 20px black;
+}

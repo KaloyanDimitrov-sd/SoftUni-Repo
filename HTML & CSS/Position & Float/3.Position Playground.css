@@ -1,0 +1,20 @@
+.first {
+    background: linear-gradient(to right, rgb(41, 103, 218), rgb(64, 235, 64));
+    height: 500px;
+}
+
+.second {
+    background: linear-gradient(to right, rgb(241, 64, 162), rgb(236, 132, 46));
+    height: 1000px;
+}
+
+i {
+    position: relative;
+    bottom: 10px;
+    right: 30px;
+    color: white;
+}
+
+.card {
+    
+}

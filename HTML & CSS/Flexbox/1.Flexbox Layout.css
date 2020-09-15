@@ -1,0 +1,37 @@
+body {
+    display: flex;
+    background-color: lightgray;
+    flex-wrap: wrap;
+    width: 90%;
+    margin: auto;
+}
+
+header,
+main,
+aside,
+footer {
+    background-color: white;
+    margin: 20px;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+header {
+    flex: 0 1 100%;
+    min-height: 150px;
+}
+
+main {
+    flex: 1 1 30%;
+    min-height: 300px;
+}
+
+footer {
+    flex: 0 1 100%;
+    min-height: 100px;
+}
+
+aside {
+    flex: 0 1 30%;
+    min-height: 300px;
+}

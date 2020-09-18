@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="Checkout form.css">
+</head>
+<body class="container bg-light">
+    <header class="text-center">
+        <img src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="70" height="70" class="my-3">
+        <h3>Checkout form</h3>
+        <p class="font-italic">Below is an example form built entirely with Bootstrap's form controls. Each required form group has a validation state that can be treiggered by attempting to submit the form without completing it.</p>
+    </header>
+    <main class="row mt-5">
+        <section class="col-12 col-md-4 mb-5 order-md-2">
+            <h4 class="d-flex justify-content-between">
+                <span class="text-dark text-muted">Your cart</span>
+                <span class="badge badge-secondary badge-pill">3</span>
+            </h4>
+            <ul class="list-group">
+                <li class="list-group-item d-flex">
+                    <div>
+                        <h6 class="mb-0">Product name</h6>
+                        <span class="small font-weight-lighter">Brief description</span>
+                    </div>
+                    <span class="ml-auto">$12</span>
+                </li>
+                <li class="list-group-item d-flex">
+                    <div>
+                        <h6 class="mb-0">Second name</h6>
+                        <span class="small font-weight-lighter">Brief description</span>
+                    </div>
+                    <span class="ml-auto">$7</span>
+                </li>
+                <li class="list-group-item d-flex">
+                    <div>
+                        <h6 class="mb-0">Third name</h6>
+                        <span class="small font-weight-lighter">Brief description</span>
+                    </div>
+                    <span class="ml-auto">$6</span>
+                </li>
+                <li class="list-group-item list-group-item-success d-flex">
+                    <div>
+                        <h6 class="mb-0">Promo code</h6>
+                        <span class="small font-weight-lighter">EXAMPLE CODE</span>
+                    </div>
+                    <span class="ml-auto">-$4</span>
+                </li>
+                <li class="list-group-item d-flex">
+                    <h6>Total (USD)</h6>
+                    <span class="ml-auto">$21</span>
+                </li>
+
+            </ul>
+            <ul class="list-group mt-4">
+                <li class="list-group-item d-flex">
+                    <input type="text" class="form-control form-control promo-input" placeholder="Promo code">
+                    <button type="button" class="btn btn-secondary promo-button">Redeem</button>
+                </li>
+            </ul>
+        </section>
+        <section class="lol-12 col-md-8 ">
+            <form class="needs-validation" novalidate>
+                <h4>Billing address</h4>
+                <div class="row">
+                    <div class="col-12 col-md-6 form-group">
+                        <label for="fname">Firstname</label>
+                        <input type="text" class="form-control" id="fname" required>
+                        <div class="invalid-feedback">Valid first name is required.</div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group">
+                        <label for="sname">Lastname</label>
+                        <input type="text" class="form-control" id="sname" required>
+                        <div class="invalid-feedback">Valid last name is required.</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">@</span>
+                        </div>
+                        <input type="text" id="username" class="form-control lastname-input" placeholder="Username" required>
+                        <div class="invalid-feedback">Your username is required.</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email <span class="text-muted">(Optional)</span></label>
+                    <input type="email" class="form-control " id="email" placeholder="you@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
+                    <div class="invalid-feedback">Please enter your shipping address.</div>
+                </div>
+                <div class="form-group">
+                    <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
+                    <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-5 form-group">
+                        <label for="country">Country</label>
+                        <select class="form-control" id="country" required>
+                            <option value>Choose...</option>
+                            <option>United States</option>
+                        </select>
+                        <div class="invalid-feedback">Please select a valid country.</div>
+                    </div>
+                    <div class="col-12 col-md-4 form-group">
+                        <label for="state">State</label>
+                        <select class="form-control" id="state" required>
+                            <option value>Choose...</option>
+                            <option>California</option>
+                        </select>
+                        <div class="invalid-feedback">Please provide a valid state.</div>
+                    </div>
+                    <div class="col-12 col-md-3 form-group">
+                        <label for="zip">Zip</label>
+                        <input type="text" class="form-control" id="zip" required>
+                        <div class="invalid-feedback">Zip code required.</div>
+
+                    </div>
+                </div>
+                <hr>
+                <div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" value="">Shipping address is the same as my billing address
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" value="">Save this information for next time
+                        </label>
+                    </div>
+                </div>
+                <hr class="mb-4">
+                <h4 class="mb-3">Payment</h4>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="optradio">Credit card
+                    </label>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="optradio">Debit card
+                    </label>
+                </div>
+                <div class="form-check disabled">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="optradio">Paypal
+                    </label>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-12 col-md-6">
+                        <div class="form-group mt-3 mb-0">
+                            <label for="cardname">Name on card</label>
+                            <input type="text" class="form-control mb-0" id="cardname" required>
+                            <div class="invalid-feedback">Name on card required.</div>
+                        </div>
+                        <small class="text-muted">Full name as displayed on card</small>
+                    </div>
+                    <div class="form-group col-12 col-md-6 mt-3">
+                        <label for="cardnumber">Credit card number</label>
+                        <input type="text" class="form-control" id="cardnumber" required>
+                        <div class="invalid-feedback">Credit card number is required.</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-3 form-group">
+                        <label for="expiration">Expiration</label>
+                        <input type="text" class="form-control" id="expiration" required>
+                        <div class="invalid-feedback">Expiration date required.</div>
+                    </div>
+                    <div class="col-12 col-md-3 form-group pb-2">
+                        <label for="cvv">CVV</label>
+                        <input type="text" class="form-control" id="cvv" required>
+                        <div class="invalid-feedback">Security code required.</div>
+                    </div>
+                </div>
+                <hr class="mb-4">
+                <button type="submit" class="btn btn-primary btn-lg col-12">Continue to checkout</button>
+            </form>
+        </section>
+    </main>
+    <footer class="d-flex flex-column align-items-center my-5">
+        <span>© 2017-2018 Company Name</span>
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Privacy</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Terms</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Support</a>
+            </li>
+        </ul>
+    </footer>
+    
+    <script>
+        // Disable form submissions if there are invalid fields
+        (function() {
+          'use strict';
+          window.addEventListener('load', function() {
+            // Get the forms we want to add validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+              form.addEventListener('submit', function(event) {
+                if (form.checkValidity() === false) {
+                  event.preventDefault();
+                  event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+              }, false);
+            });
+          }, false);
+        })();
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -26,6 +26,11 @@ function loadRepos() {
 			console.log();
 		})
 		.catch(function (err) {
-			
+			let ul = document.getElementById("repos");
+			let li = document.querySelector("li");
+			ul.removeChild(li);
+			let h1 = document.createElement("h1");
+			h1.textContent = err.message
+			ul.appendChild(h1);
 		})
 }

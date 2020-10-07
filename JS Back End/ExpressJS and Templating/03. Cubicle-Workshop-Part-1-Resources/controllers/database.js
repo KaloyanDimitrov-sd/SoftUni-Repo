@@ -21,9 +21,9 @@ const saveCube = (cube, callback) => {
                 throw error;
             };
 
-            isDBAccessed = false
+            isDBAccessed = false;
             console.log("New cube is successfully stored");
-            callback()
+            callback();
         });
     });
 

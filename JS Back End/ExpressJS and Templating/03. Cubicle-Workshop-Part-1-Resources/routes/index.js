@@ -1,6 +1,6 @@
 const { getAllCubes } = require("../controllers/cubes");
 const { getCube } = require("../controllers/database");
-const Cube = require("../models/cube")
+const Cube = require("../models/cube");
 
 module.exports = (app) => {
     

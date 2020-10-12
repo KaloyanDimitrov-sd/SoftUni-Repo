@@ -21,7 +21,7 @@ getCubes().then(cubes => {
 function getCubes() {
     return new Promise((resolve, reject) => {
         fs.readFile(DATABASE_PATH, "utf-8", (error, data) => {
-            if(error) {
+            if (error) {
                 reject(error);
             };
 
@@ -33,14 +33,14 @@ function getCubes() {
 
 function getCubesById(id) {
     return getCubes()
-                .then(cubes => {
-                    let cube = cubes.find(c => c.id === id);
-                    if(!cube) {
-                        throw new Error(`Cube with id ${id} does not exist.`);
-                    };
+        .then(cubes => {
+            let cube = cubes.find(c => c.id === id);
+            if (!cube) {
+                throw new Error(`Cube with id ${id} does not exist.`);
+            };
 
-                    return cube;
-                });
+            return cube;
+        });
 };
 
 function searchCubes(search, difficultyFrom, difficultyTo) {
@@ -48,20 +48,20 @@ function searchCubes(search, difficultyFrom, difficultyTo) {
     let toDifficultyParsed = parseInt(difficultyTo);
 
     return getCubes()
-                .then(cubes => {
-                    let filteredCubes = cubes.filter(c => {
-                        let lowerCaseSearch = search.trim().toLowerCase();
-                        let searchIncluded = !search || c.name.toLowerCase().includes(lowerCaseSearch) || c.description.toLowerCase().includes(lowerCaseSearch);
+        .then(cubes => {
+            let filteredCubes = cubes.filter(c => {
+                let lowerCaseSearch = search.trim().toLowerCase();
+                let searchIncluded = !search || c.name.toLowerCase().includes(lowerCaseSearch) || c.description.toLowerCase().includes(lowerCaseSearch);
 
-                        let isFromDifficulty = !fromDifficultyParsed || c.difficultyLevel >= fromDifficultyParsed;
+                let isFromDifficulty = !fromDifficultyParsed || c.difficultyLevel >= fromDifficultyParsed;
 
-                        let isToDifficulty = !toDifficultyParsed || c.difficultyLevel <= toDifficultyParsed;
+                let isToDifficulty = !toDifficultyParsed || c.difficultyLevel <= toDifficultyParsed;
 
-                        return searchIncluded && isFromDifficulty && isToDifficulty;
-                    });
+                return searchIncluded && isFromDifficulty && isToDifficulty;
+            });
 
-                    return { cubes: filteredCubes, search };
-                });
+            return { cubes: filteredCubes, search };
+        });
 };
 
 function save(cube) {

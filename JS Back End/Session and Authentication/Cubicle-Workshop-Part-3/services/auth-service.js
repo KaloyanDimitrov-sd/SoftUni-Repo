@@ -101,6 +101,26 @@ async function isFullAuth(req, res, next) {
     };
 };
 
+async function editDeleteAccess(req, res, next) {
+    try {
+        res.locals.editDeleteAccess = false;
+        const id = req.params.id;
+        const token = req.cookies["aid"];
+        const userObj = jwt.verify(token, config.privateKey);
+
+        const cube = await Cube.findById(id);
+
+        if(cube.creatorId == userObj.userId) {
+            res.locals.editDeleteAccess = true;
+            return next();
+        };
+    } catch (e) {
+        res.locals.editDeleteAccess = false;
+    }
+
+    next();
+};
+
 module.exports = {
     createUser,
     verifyUser,
@@ -108,5 +128,6 @@ module.exports = {
     isAuth,
     isGuest,
     logout,
-    isFullAuth
+    isFullAuth,
+    editDeleteAccess
 };

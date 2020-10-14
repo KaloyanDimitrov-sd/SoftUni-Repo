@@ -3,7 +3,7 @@ const env = process.env.NODE_ENV || "development";
 const config = require("../config/config")[env];
 const jwt = require("jsonwebtoken");
 const { saveCube, getCubesById, getCubeAccessories, editCube, deleteCube } = require("../services/cube-service");
-const { isAuth, isFullAuth } = require("../services/auth-service");
+const { isAuth, isFullAuth, editDeleteAccess } = require("../services/auth-service");
 
 
 module.exports = (app) => {
@@ -23,7 +23,7 @@ module.exports = (app) => {
         res.status(302).redirect("/");
     });
 
-    app.get("/cube-details/:id", (req, res) => {
+    app.get("/cube-details/:id", editDeleteAccess, (req, res) => {
         getCubesById(req.params.id)
             .then(async (cube) => {
                 let accessories = await getCubeAccessories(cube._id);
@@ -43,10 +43,11 @@ module.exports = (app) => {
             });
     });
 
-    app.get("/delete-cube/:id", isFullAuth, (req, res) => {
+    app.get("/delete-cube/:id", isFullAuth, async (req, res) => {
         const id = req.params.id;
+        const cube = await getCubesById(id);
 
-        res.status(200).render("deleteCubePage", { id });
+        res.status(200).render("deleteCubePage", cube);
     });
 
     app.post("/delete-cube/:id", isFullAuth, (req, res) => {
@@ -56,10 +57,11 @@ module.exports = (app) => {
         res.redirect("/");
     });
 
-    app.get("/edit-cube/:id", isFullAuth, (req, res) => {
+    app.get("/edit-cube/:id", isFullAuth, async (req, res) => {
         const id = req.params.id;
+        const cube = await getCubesById(id);
 
-        res.status(200).render("editCubePage", { id });
+        res.status(200).render("editCubePage", cube);
     });
 
     app.post("/edit-cube/:id", isFullAuth, (req, res) => {

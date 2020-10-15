@@ -4,7 +4,7 @@ const config = require("../config/config")[env];
 const jwt = require("jsonwebtoken");
 const { saveCube, getCubesById, getCubeAccessories, editCube, deleteCube } = require("../services/cube-service");
 const { isAuth, isFullAuth, editDeleteAccess } = require("../services/auth-service");
-
+const { createCubeError } = require("../services/errors");
 
 module.exports = (app) => {
     app.get("/create-cube", isAuth, (req, res) => {
@@ -12,10 +12,16 @@ module.exports = (app) => {
     });
 
     app.post("/create-cube", isAuth, (req, res) => {
+        let cube = { name, description, imageUrl, difficultyLevel } = req.body;
+        const errorResult = createCubeError(name, description, imageUrl, difficultyLevel);
+
+        if (errorResult.error) {
+            return res.render("create", errorResult);
+        }
+
         const token = req.cookies["aid"];
         const decodedObject = jwt.verify(token, config.privateKey);
 
-        let cube = { name, description, imageUrl, difficultyLevel } = req.body;
         cube.creatorId = decodedObject.userId;
 
         saveCube(cube);

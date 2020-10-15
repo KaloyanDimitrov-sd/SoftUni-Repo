@@ -6,14 +6,17 @@ const DESCRIPTION_MAX_LENGTH = 200;
 const cubeSchema = new Schema({
     name: {
         type: String,
-        minlength: [2, "Name is too short"],
+        minlength: [5, "Name is too short"],
         maxlength: [30, "Name is too long"],
-        required: [true, "Please fill a valid name"]
+        required: [true, "Please fill a valid name"],
+        match: [/^[\w*\s*]*$/, "Name should be only English letters and digits"]
     },
     description: {
         type: String,
         maxlength: [DESCRIPTION_MAX_LENGTH, `Description cannot be longer than ${DESCRIPTION_MAX_LENGTH} symbols.`],
-        required: [true, "Please fill a valid description"]
+        required: [true, "Please fill a valid description"],
+        minlength: [10, "Description is too short"],
+        match: [/^[\w*\s*]*$/, "Name should be only English letters and digits"]
     },
     imageUrl: {
         type: String,

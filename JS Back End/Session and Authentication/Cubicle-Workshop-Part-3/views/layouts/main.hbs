@@ -10,12 +10,19 @@
 
 <body>
     <div class="container"></div>
-        {{> header}}
-        <main>
-            {{{ body }}}
-        </main>
+    {{> header }}
+    {{#if error }}
+        <div id="notifications">
+            {{#each errorMessage}}
+                <p id="notifications-message">{{ message }}</p>
+            {{/each}}
+        </div>
+    {{/if}}
+    <main>
+        {{{ body }}}
+    </main>
     </div>
-    {{> footer}}
+    {{> footer }}
 </body>
 
 </html>

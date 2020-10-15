@@ -13,8 +13,8 @@ function createJWT(data) {
 
 async function createUser(req, res) {
     const { username, password } = req.body;
-    const saltRounds = 10;
 
+    const saltRounds = 10;
     const hash = await bcrypt.hash(password, saltRounds);
 
     const userObject = await new Users({
@@ -33,6 +33,10 @@ async function verifyUser(req, res) {
     const { username, password } = req.body;
 
     const user = await Users.findOne({ username });
+
+    if (user === null) {
+        return false;
+    }
 
     const status = await bcrypt.compare(password, user.password);
 

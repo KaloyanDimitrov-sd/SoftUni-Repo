@@ -1,4 +1,5 @@
 const { createUser, verifyUser, isGuest, isAuth, logout } = require("../services/auth-service");
+const { registerError } = require("../services/errors");
 
 module.exports = (app) => {
 
@@ -9,8 +10,8 @@ module.exports = (app) => {
     app.post("/login", isGuest, async (req, res) => {
         const status = await verifyUser(req, res);
 
-        if (status) {
-            return res.status(302).redirect("/");
+        if (!status) {
+            return res.render("loginPage", { error: true, errorMessage: [{ message: "Invalid username or password"}]});
         };
 
         res.status(302).redirect("/");
@@ -22,6 +23,13 @@ module.exports = (app) => {
     });
 
     app.post("/register", isGuest, async (req, res) => {
+        const { username, password } = req.body;
+        const errorsResult = registerError(username, password);
+
+        if (errorsResult.error) {
+            return res.render("registerPage", errorsResult);
+        }
+
         const status = await createUser(req, res);
 
         if (status) {

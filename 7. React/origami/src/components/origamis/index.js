@@ -1,28 +1,20 @@
-import React, { Component } from "react";
+import React, { useCallback, useEffect, useState } from "react";
+import getOrigami from "../../utils/origami";
 import Origam from "../origam";
 import styles from "./index.module.css";
 
-class Origamis extends Component {
-    constructor(props) {
-        super(props)
+const Origamis = (props) => {
 
-        this.state = {
-            origamis: []
-        }
-    }
+    const [origamis, setOrigamis] = useState([]);
 
-    getOrigamis = async () => {
-        const { length } = this.props;
-        const promise = await fetch(`http://localhost:9999/api/origami?length=${length}`);
-        const origamis = await promise.json();
+    const getOrigamis = useCallback(async () => {
+        const origamis = await getOrigami(props.length);
 
-        this.setState({
-            origamis
-        })
-    }
+        setOrigamis(origamis);
 
-    renderOrigamis() {
-        const { origamis } = this.state;
+    }, [props.length]);
+
+    const renderOrigamis = () => {
 
         return origamis.map((origam, index) => {
             return (
@@ -31,17 +23,15 @@ class Origamis extends Component {
         })
     }
 
-    componentDidMount() {
-        this.getOrigamis()
-    }
+    useEffect(() => {
+        getOrigamis()
+    }, [getOrigamis, props.updatedOrigami]);
 
-    render() {
-        return (
-            <div className={styles["origamis-wrapper"]}>
-                {this.renderOrigamis()}
-            </div>
-        )
-    }
+    return (
+        <div className={styles["origamis-wrapper"]}>
+            {renderOrigamis()}
+        </div>
+    )
 }
 
 export default Origamis

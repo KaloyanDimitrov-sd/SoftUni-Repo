@@ -6,7 +6,7 @@ import styles from "./index.module.css";
 const Origamis = (props) => {
 
     const [origamis, setOrigamis] = useState([]);
-
+    
     const getOrigamis = useCallback(async () => {
         const origamis = await getOrigami(props.length);
 
